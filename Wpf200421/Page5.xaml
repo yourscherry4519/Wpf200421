@@ -1,0 +1,36 @@
+﻿<Page x:Class="Wpf200421.Page5"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Wpf200421"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page5" Background="Plum">
+
+    <Grid>
+        <materialDesign:Card Width="600" Height="400" Margin="105,0,83,-0.4">
+            <StackPanel>
+                <TextBlock Text="Укажите информацию о мифическом существе" FontSize="22"/>
+                <Separator Style="{StaticResource MaterialDesignLightSeparator}" Background="Aquamarine"/>
+                <StackPanel Margin="20,10,10,0" Height="280">
+                    <TextBox materialDesign:HintAssist.Hint="Вид" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <ComboBox materialDesign:HintAssist.Hint="Род" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBoxItem>Женский</ComboBoxItem>
+                        <ComboBoxItem>Мужской</ComboBoxItem>
+                        <ComboBoxItem>ХЗ</ComboBoxItem>
+                    </ComboBox>
+                    <TextBox materialDesign:HintAssist.Hint="Кормежка" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <materialDesign:DialogHost CloseOnClickAway="True">
+                        <materialDesign:DialogHost.DialogContent>
+                            <TextBlock Text="Найден"/>
+                        </materialDesign:DialogHost.DialogContent>
+                        <Button Content="Найти подходащего" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Width="200"/>
+                    </materialDesign:DialogHost>
+                   
+                </StackPanel>
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+</Page>

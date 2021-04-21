@@ -1,0 +1,97 @@
+﻿<Window x:Class="Wpf200421.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Wpf200421"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1240" Foreground="PowderBlue" WindowStyle="None" MouseDown="Window_MouseDown" ResizeMode="NoResize">
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="MenuGrid" >
+                <EasingDoubleKeyFrame KeyTime="0" Value="80"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpen">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+
+    </Window.Triggers>
+    <Grid>
+        <Grid x:Name="MainGrid" Background="Teal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="620" Width="1160">
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        </Grid>
+        <Grid Height="80" Background="Turquoise" VerticalAlignment="Top">
+            <TextBlock Text="Предметная область" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Foreground="White" />
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,12" Width="138">
+                <TextBlock Text="Пользователь" FontSize="16" Foreground="White" Height="23" Margin="0,0,26.6,0"/>
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="101,5,0,5" Foreground="White" Width="27" Height="22">
+                    <StackPanel Width="200">
+                        <Button Content="Настройки"/>
+                        <Button Content="Профиль"/>
+                        <Button Content="Помощь"/>
+                        <Separator/>
+                        <Button Content="Выход" Click="Button_Click"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </StackPanel>
+        </Grid>
+        <!--Меню-->
+
+        <Grid x:Name="MenuGrid" Width="80" HorizontalAlignment="Left" Background="Turquoise">
+            <StackPanel>
+                <Grid Height="80" Background="Cyan">
+                    <Button x:Name="ButtonOpen" Background="{x:Null}" VerticalAlignment="Top" Height="80" BorderBrush="{x:Null}" HorizontalAlignment="Right" Click="ButtonOpen_Click" >
+                        <materialDesign:PackIcon Kind="Menu" Width="50" Height="50"/>
+                    </Button>
+                    <Button x:Name="ButtonClose" Visibility="Collapsed" Background="{x:Null}" VerticalAlignment="Top" Height="80" BorderBrush="{x:Null}" HorizontalAlignment="Right" >
+                        <materialDesign:PackIcon Kind="CloseCircle" Width="50" Height="50"/>
+                    </Button>
+                </Grid>
+                <ListView x:Name="MenuListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="Gold" SelectionChanged="MenuListView_SelectionChanged">
+                    <ListViewItem x:Name="MainItem" Height="80">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Home" Width="50" Height="50" Margin="8,0,0,0"/>
+                            <TextBlock Text="Главная" VerticalAlignment="Center" Margin="20,0,0,0" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="FirstItem" Height="80">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Safe" Width="50" Height="50" Margin="8,0,0,0"/>
+                            <TextBlock Text="Переход 1" VerticalAlignment="Center" Margin="20,0,0,0" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="ForItem" Height="80">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Rabbit" Width="50" Height="50" Margin="8,0,0,0"/>
+                            <TextBlock Text="Переход 2" VerticalAlignment="Center" Margin="20,0,0,0" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="SItem" Height="80">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="EyeTick" Width="50" Height="50" Margin="8,0,0,0"/>
+                            <TextBlock Text="Переход 3" VerticalAlignment="Center" Margin="20,0,0,0" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="DItem" Height="80">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Gambling" Width="50" Height="50" Margin="8,0,0,0"/>
+                            <TextBlock Text="Переход 4" VerticalAlignment="Center" Margin="20,0,0,0" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</Window>
